@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const subirLocal = JSON.parse(localStorage.getItem("productos")) || [];
   let productos = [];
 
-  //* EVENETOS
+  //* EVENTOS
 
   document.addEventListener("click", ({ target }) => {
     if (target.matches(".btn-btn-primary")) {
