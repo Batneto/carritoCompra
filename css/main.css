@@ -1,42 +1,40 @@
-/* *{
+ *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
-
-#titulo{
-    background-color: black;
+#titulo {
+    
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
     text-align: center;
-    color: white;
- 
-}
-#pintargrid{
-    display: grid;
-    gap: 30px;
-    margin-top: 50px;
-    grid-template-columns: repeat(2,1fr);
-   
-}
-
-.divfotos {
-   display: flex;
-   justify-content: center;
-}
+    background-color: black;
+    color: #f8f8f8;
+  }
 
 #divtabla{
     text-align: left;
     border: 1px solid black;
 
-} */
+}  
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .col-sm-6 {
+    display: flex;
+    justify-content: center;
+  }
+
+.fotoSmall{
+    width: 10%;
+    height: 10%;
+}
 
 
 
 
-
-
-/* @media only screen and (max-width: 600px) {
-    body {
-      background-color: lightblue;
-    }
-  } */
