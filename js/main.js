@@ -118,8 +118,11 @@ document.addEventListener("DOMContentLoaded", () => {
       let tr=document.createElement("TR")
       let tdimg=document.createElement("TD")
       let tdprecio=document.createElement("TD")
+      let cantidad=document.createElement("TD")
+      let subtotal=document.createElement("TD")
       // let tdsubtotal=document.createElement("TD")
       // tdsubtotal.textContent=price
+      subtotal.textContent=price
       tdprecio.textContent=price
       let img=document.createElement("img")
        img.src=thumbnail
@@ -127,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let tdtitle=document.createElement("Td")
       tdtitle.textContent=title
       tdimg.append(img)
-      tr.append(tdimg,tdtitle,tdprecio)
+      tr.append(tdimg,tdtitle,tdprecio,cantidad,subtotal)
       tabla.append(tr)
     });
     tabla.append(comprar,vaciar)
