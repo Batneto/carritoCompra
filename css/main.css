@@ -1,0 +1,42 @@
+/* *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+#titulo{
+    background-color: black;
+    text-align: center;
+    color: white;
+ 
+}
+#pintargrid{
+    display: grid;
+    gap: 30px;
+    margin-top: 50px;
+    grid-template-columns: repeat(2,1fr);
+   
+}
+
+.divfotos {
+   display: flex;
+   justify-content: center;
+}
+
+#divtabla{
+    text-align: left;
+    border: 1px solid black;
+
+} */
+
+
+
+
+
+
+/* @media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+  } */
