@@ -58,6 +58,7 @@
   margin-left: 200px;
   margin-bottom: 20px;
  }
+
  .cielo img {
 
    max-width: 6%;
@@ -66,11 +67,7 @@
 
  }
 
- #todaLaTabla {
-   position: absolute;
-   background-color: wheat;
-   margin-left: 10px;
- }
+
 
 
  #todaLaTabla td,
@@ -81,6 +78,7 @@
 
  .tdFoto{
   max-width: 10%;
+  
  }
 
  .card {
@@ -97,9 +95,30 @@
  }
 
  .fotoSmall {
-   max-width: 10%;
+   max-width: 15%;
  }
 
  #tabla button{
   margin-left: 20px;
  }
+
+ table {
+  position: absolute;
+  border-collapse: collapse;
+  width: 70%;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #444444;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: middle;
+  border-top: 1px solid #f7f7f7;
+  background-color: #fff;
+}
+
