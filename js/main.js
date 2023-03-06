@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const card = document.querySelector("#pintargrid");
   const tabla = document.querySelector("#tabla");
   const fragment = document.createDocumentFragment();
+  const tablaCompleta=document.querySelector("#todaLaTabla");
 
   //todo ARRAYS
 
@@ -18,18 +19,19 @@ document.addEventListener("DOMContentLoaded", () => {
       pintarTablaDelLocal()
     }
     if (target.matches(".comprar")) {
-        console.log(target);
-        location.assign("compra.html?id=2" )
-      }
-      if (target.matches(".vaciar")) {
-        localStorage.removeItem('productos');
-      }
+      
+      location.assign("compra.html?id=2")
+    }
+    if (target.matches(".vaciar")) {
+      localStorage.removeItem('productos');
+    }
+    if (target.matches("#carrito")) {
+      tablaCompleta.classList.toggle("hidden")
+      
+    }
 
-
-
-    
   });
-  
+
 
   //* FUNCIONES
   const consulta = async () => {
@@ -50,7 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const pintarEstrellas = (rating) => {
+
     let cielo = document.createElement("DIV");
+    cielo.className = "cielo"
     let valoracion = Math.round(rating);
     let valoracionInversa = 5 - valoracion;
 
@@ -90,50 +94,63 @@ document.addEventListener("DOMContentLoaded", () => {
       h5.className = "card-title";
       let estrellas = pintarEstrellas(rating);
 
-      cardBody.append(h5, button, estrellas);
-      fragment.append(img, cardBody);
+      cardBody.append(img, h5, button, estrellas);
+      fragment.append(cardBody);
     });
     card.append(fragment);
   };
 
   const buscarProducto = (id) => {
     productos.forEach((arrayProductos) => {
+      let cont=1
       const productoEncontrado = arrayProductos.find((item) => item.id == id);
-      subirLocal.push(productoEncontrado);
-      console.log(subirLocal);
+
+      productoEncontrado.cantidad=cont
+      if (subirLocal.find((item)=>item.id==id)) {
+        
+        cont++
+        productoEncontrado.cantidad=cont
+      }else{
+
+        subirLocal.push(productoEncontrado);
+      
       setLocal();
+      }
+      
     });
   };
 
   const pintarTablaDelLocal = () => {
     tabla.innerHTML = "";
-    let comprar=document.createElement("button")
-    let vaciar=document.createElement("button")
-    comprar.className="comprar"
-    vaciar.className="vaciar" 
-    comprar.textContent="Comprar"
-    vaciar.textContent="vaciar"
+    let comprar = document.createElement("button")
+    let vaciar = document.createElement("button")
+    comprar.className = "comprar"
+    vaciar.className = "vaciar"
+    comprar.textContent = "Comprar"
+    vaciar.textContent = "vaciar"
     const productos = getLocal();
-    productos.forEach(({title,price,thumbnail}) => {
-      let tr=document.createElement("TR")
-      let tdimg=document.createElement("TD")
-      let tdprecio=document.createElement("TD")
-      let cantidad=document.createElement("TD")
-      let subtotal=document.createElement("TD")
+    productos.forEach(({ title, price, thumbnail,cantidad }) => {
+      let tr = document.createElement("TR")
+      let tdimg = document.createElement("TD")
+      tdimg.className="tdFoto"
+      let tdcantidad=document.createElement("TD")
+      let tdprecio = document.createElement("TD")
+      let subtotal = document.createElement("TD")
       // let tdsubtotal=document.createElement("TD")
       // tdsubtotal.textContent=price
-      subtotal.textContent=price
-      tdprecio.textContent=price
-      let img=document.createElement("img")
-       img.src=thumbnail
-       img.className="fotoSmall"
-      let tdtitle=document.createElement("Td")
-      tdtitle.textContent=title
+      tdcantidad.textContent=cantidad
+      subtotal.textContent = price
+      tdprecio.textContent = price
+      let img = document.createElement("img")
+      img.src = thumbnail
+      img.className = "fotoSmall"
+      let tdtitle = document.createElement("Td")
+      tdtitle.textContent = title
       tdimg.append(img)
-      tr.append(tdimg,tdtitle,tdprecio,cantidad,subtotal)
+      tr.append(tdimg, tdtitle, tdprecio, tdcantidad, subtotal)
       tabla.append(tr)
     });
-    tabla.append(comprar,vaciar)
+    tabla.append(comprar, vaciar)
   };
 
   //todo FUNCIONES DEL LOCAL
@@ -159,8 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       pintarFotos();
     }
-}
+  }
 
   init()
- 
+
 }); //!LOAD

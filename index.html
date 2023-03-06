@@ -4,14 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Carrito De la Compra</title>
     
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
     <div id="titulo"><h1>Practica Carro De Compra</h1></div>
+    <i class="fa-sharp fa-solid fa-cart-shopping" id="carrito"></i>
     <div id="divtabla">
-      <table>
+      <table id="todaLaTabla" class="hidden">
         <thead id="encabezadoTabla">
           <tr>
             <th>Imagen</th>
@@ -24,11 +26,9 @@
         <tbody id="tabla"></tbody>
       </table>
     </div>
-    <div class="row">
-      <div class="col-sm-6">
+    
         <div id="pintargrid" class="card"></div>
-      </div>
-    </div>
+    
 
     <script src="js/main.js"></script>
   </body>
