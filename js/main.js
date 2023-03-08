@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (target.matches(".comprar")) {
       
-      location.assign("compra.html?id=2")
+      location.assign("compra.html")
     }
     if (target.matches(".vaciar")) {
       localStorage.removeItem('productos');
@@ -29,11 +29,27 @@ document.addEventListener("DOMContentLoaded", () => {
       tablaCompleta.classList.toggle("hidden")
       
     }
+    if (target.matches(".menos")) {
+      console.log("menos");
+      
+    }
 
   });
 
 
   //* FUNCIONES
+
+  //sacar del arrayProductosSeleccionados
+    const sacarProductosSeleccionados = (id) => {
+       
+
+        const indiceElemento = arrayProductosSeleccionados.findIndex((item)=>item.id==id)
+        if(indiceElemento!=-1){
+            arrayProductosSeleccionados.splice(indiceElemento,1)
+            setLocal();
+        }
+    }
+
   const consulta = async () => {
     try {
       let ruta = `https://dummyjson.com/products`; //*limit=10&skip=10
@@ -136,6 +152,11 @@ document.addEventListener("DOMContentLoaded", () => {
       let tdcantidad=document.createElement("TD")
       let tdprecio = document.createElement("TD")
       let subtotal = document.createElement("TD")
+      let mas=document.createElement("button")
+      mas.textContent="+"
+      let menos=document.createElement("button")
+      menos.textContent="-"
+      menos.className="menos"
       subtotal.textContent=price*cantidad
       tdcantidad.textContent=cantidad
       tdprecio.textContent = price
@@ -145,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let tdtitle = document.createElement("Td")
       tdtitle.textContent = title
       tdimg.append(img)
+      tdcantidad.append(menos,mas)
       tr.append(tdimg, tdtitle, tdprecio, tdcantidad, subtotal)
       tabla.append(tr)
     });
@@ -163,11 +185,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //todo INIT
   const init = () => {
 
-    const url = location.search;
+    const url = location.toString();
 
-    let params = new URLSearchParams(url);
-
-    if (params.has("id")) {
+    if (url.includes("compra")) {
       getLocal()
       pintarTablaDelLocal()
 
